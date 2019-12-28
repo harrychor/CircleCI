@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
 
+      - run: 
+          name: install pip update 
+          command: pip install --upgrade pip 
       - run:
           name: Install Python deps in a venv
           command: python3 -m venv venv
