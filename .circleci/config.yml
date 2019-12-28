@@ -10,7 +10,8 @@ jobs:
       - run:
           name: Install Python deps in a venv
           command: python3 -m venv venv
-          
+      - run:
+          name: Install rewquirements    
           command: pip install -r requirements/dev.txt
 
       - run:
