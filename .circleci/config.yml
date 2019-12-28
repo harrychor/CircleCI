@@ -8,14 +8,16 @@ jobs:
       - checkout
 
       - run: 
-          name: install pip update 
-          command: pip install --upgrade pip 
+          name: Setup virtualenv
+          command: virtualenv env 
       - run:
           name: Install Python deps in a venv
           command: python3 -m venv venv
       - run:
           name: Install rewquirements    
-          command: pip install -r requirements/dev.txt
+          command: |
+          source env/bin/activate
+          pip install -r requirements/dev.txt
 
       - run:
           name:  Running tests
