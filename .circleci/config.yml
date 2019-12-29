@@ -18,7 +18,7 @@ jobs:
           command: pip install --upgrade setuptools --user
       - run:
           name: Install 
-          command: sudo apt install libgirepository1.0-dev --user
+          command: sudo apt install libgirepository1.0-dev
 
       - run:
           name: Install rewquirements    
