@@ -17,8 +17,11 @@ jobs:
           name: Install setuptool
           command: pip install --upgrade setuptools --user
       - run:
+          name: Install libdbus update
+          command: sudo apt-get update
+      - run:
           name: Install libdbus
-          command: sudo apt install git virtualenv build-essential python3-dev libdbus-glib-1-dev
+          command: sudo apt-get install libdbus-glib-1-dev    
 
       - run:
           name: Install rewquirements    
