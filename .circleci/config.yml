@@ -24,7 +24,11 @@ jobs:
           command: sudo apt-get install libdbus-glib-1-dev    
       - run:
           name: Install python-dev
-          command: sudo apt-get install python-dev     
+          command: sudo apt-get install python-dev  
+      - run:
+          name: Install libevent-dev
+          command: sudo apt-get install libevent-dev    
+
 
       - run:
           name: Install rewquirements    
