@@ -15,7 +15,7 @@ jobs:
           command: python3 -m venv venv
       - run:
           name: Install setuptool
-          command: pip install --upgrade setuptools
+          command: pip install --upgrade setuptools --user
       - run:
           name: Install rewquirements    
           command: pip install -r requirements/dev.txt
