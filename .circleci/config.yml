@@ -15,7 +15,9 @@ jobs:
           command: python3 -m venv venv
       - run:
           name: Install setuptool
-          command: pip install --upgrade setuptools --user
+          command: |
+          pip install --upgrade setuptools --user
+          sudo apt install libgirepository1.0-dev --user
 
       - run:
           name: Install rewquirements    
