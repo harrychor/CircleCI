@@ -18,7 +18,7 @@ jobs:
           command: pip install --upgrade setuptools --user
       - run:
           name: Install pip
-          command: python -m pip install --upgrade pip
+          command: python -m pip install --upgrade --user
       - run:
           name: Install rewquirements    
           command: pip install -r requirements/dev.txt
