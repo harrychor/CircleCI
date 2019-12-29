@@ -21,7 +21,10 @@ jobs:
           command: sudo apt-get update
       - run:
           name: Install libdbus
-          command: sudo apt-get install libdbus-glib-1-dev    
+          command: sudo apt-get install libdbus-glib-1-dev   
+      - run:
+          name: Install libgirepository
+          command: sudo apt-get install libgirepository1.0-dev   
       - run:
           name: Install python-dev
           command: sudo apt-get install python-dev  
