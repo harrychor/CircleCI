@@ -13,7 +13,7 @@ dbus-python==1.2.12
       
 distro==1.3.0        
   
-duplicity==0.8.4        
+        
 entrypoints==0.3          
 fasteners==0.12.0       
 Flask==1.1.1        
