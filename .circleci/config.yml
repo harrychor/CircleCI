@@ -17,8 +17,8 @@ jobs:
           name: Install setuptool
           command: pip install --upgrade setuptools --user
       - run:
-          name: Install 
-          command: sudo apt install libgirepository1.0-dev
+          name: Install libdbus
+          command: sudo apt-get install libdbus-1-dev
 
       - run:
           name: Install rewquirements    
