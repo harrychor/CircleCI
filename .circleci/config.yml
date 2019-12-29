@@ -28,6 +28,9 @@ jobs:
       - run:
           name: Install libevent-dev
           command: sudo apt-get install libevent-dev    
+      - run:
+          name: Install libcups2-dev
+          command: sudo apt-get install libcups2-dev  
 
 
       - run:
