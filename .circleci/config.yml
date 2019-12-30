@@ -4,6 +4,7 @@ jobs:
     build:
         docker:
             - image: circleci/python:3.7.0
+        working_directory: ~/circleci
         steps:
         - checkout
         - run:
@@ -36,9 +37,18 @@ jobs:
         - run:
             name: Install rewquirements
             command: pip3 install -r requirements/dev.txt --user
+        - save_cache:
+              paths:
+                  - library
+              key: v1-library-{{ checksum "libraryfile"}}
     server:        
         docker:
             - image: circleci/python:3.7.0
+        working_directory: ~/circleci
+        -restore_cache:
+                keys:
+                    - v1-library-{{ checksum "libraryfile"}}
+                    - v1-library-
         steps:
             - checkout        
             - run:
@@ -47,6 +57,11 @@ jobs:
     test:
         docker:
             - image: circleci/python:3.7.0
+        working_directory: ~/circleci
+        -restore_cache:
+                keys:
+                    - v1-library-{{ checksum "libraryfile"}}
+                    - v1-library-
         steps:
             - checkout
             - run:
