@@ -40,7 +40,7 @@ jobs:
         - save_cache:
             key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
             paths:
-                - "library"
+                - ~/circleci 
 
     server:        
         docker:
@@ -50,8 +50,7 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-                    - "library"        
+                    - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}        
             - run:
                 name: Running tests
                 command: python3 app.py
@@ -64,7 +63,6 @@ jobs:
             - restore_cache:
                 keys:
                     - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-                    - "library"
             - run:
                     name: test
                     command: python3 unitest_mysql.py
