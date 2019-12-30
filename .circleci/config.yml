@@ -4,7 +4,6 @@ jobs:
   build:
     docker:
         - image: circleci/python:3.7.0
-    working_directory: ~/cricleCI
     steps:
     - checkout
     - run:
@@ -37,27 +36,25 @@ jobs:
     - run:
         name: Install rewquirements
         command: pip3 install -r requirements/dev.txt --user
-    deploy:
-        machine:
-            enabled: true
-        working_drectory: ~/cricleCI
+    - run:
+        name: Running tests
+        command: python3 app.py
+    test:
+        docker:
+            - image: circleci/python:3.7.0
         step:
             - checkout
             - run:
-                name: Running tests
-                command: python3 app.py
+                    name: test
+                    command: python3 unitest_mysql.py
+
 
 workflows:
     version: 2
     build-and-deploy:
         jobs:
         - build
-        - deploy:
-            requires:
-                - build
-            step: 
-                - checkout
+        - test
+            
 
-                - run:
-                    name: test
-                    command: python3 unitest_mysql.py
+                
