@@ -1,53 +1,53 @@
 version: 2
 
 jobs:
-  build:
-    docker:
-        - image: circleci/python:3.7.0
-    steps:
-    - checkout
-    - run:
-        name: Setup virtualenv
-        command: virtualenv env
-    - run:
-        name: Install Python deps in a venv
-        command: python3 -m venv venv
-    - run:
-        name: Install setuptool
-        command: pip install --upgrade setuptools --user
-    - run:
-        name: Install libdbus update
-        command: sudo apt-get update
-    - run:
-        name: Install libdbus
-        command: sudo apt-get install libdbus-glib-1-dev
-    - run:
-        name: Install libgirepository
-        command: sudo apt-get install libgirepository1.0-dev
-    - run:
-        name: Install python-dev
-        command: sudo apt-get install python-dev
-    - run:
-        name: Install libevent-dev
-        command: sudo apt-get install libevent-dev
-    - run:
-        name: Install libcups2-dev
-        command: sudo apt-get install libcups2-dev
-    - run:
-        name: Install rewquirements
-        command: pip3 install -r requirements/dev.txt --user
-server:        
+    build:
         docker:
             - image: circleci/python:3.7.0
-        step:
+        steps:
+        - checkout
+        - run:
+            name: Setup virtualenv
+            command: virtualenv env
+        - run:
+            name: Install Python deps in a venv
+            command: python3 -m venv venv
+        - run:
+            name: Install setuptool
+            command: pip install --upgrade setuptools --user
+        - run:
+            name: Install libdbus update
+            command: sudo apt-get update
+        - run:
+            name: Install libdbus
+            command: sudo apt-get install libdbus-glib-1-dev
+        - run:
+            name: Install libgirepository
+            command: sudo apt-get install libgirepository1.0-dev
+        - run:
+            name: Install python-dev
+            command: sudo apt-get install python-dev
+        - run:
+            name: Install libevent-dev
+            command: sudo apt-get install libevent-dev
+        - run:
+            name: Install libcups2-dev
+            command: sudo apt-get install libcups2-dev
+        - run:
+            name: Install rewquirements
+            command: pip3 install -r requirements/dev.txt --user
+    server:        
+        docker:
+            - image: circleci/python:3.7.0
+        steps:
             - checkout        
             - run:
                 name: Running tests
                 command: python3 app.py
-test:
+    test:
         docker:
             - image: circleci/python:3.7.0
-        step:
+        steps:
             - checkout
             - run:
                     name: test
