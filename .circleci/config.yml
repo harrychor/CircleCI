@@ -7,6 +7,12 @@ jobs:
         working_directory: ~/circleci
         steps:
         - checkout
+        - restore_cache:
+            keys:
+                - pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+                - pip-library-{{ .Branch }}-   
+                - pip-library-
+
         - run:
             name: Setup virtualenv
             command: virtualenv env
