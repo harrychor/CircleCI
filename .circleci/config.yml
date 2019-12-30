@@ -38,7 +38,7 @@ jobs:
             name: Install rewquirements
             command: pip3 install -r requirements/dev.txt --user
         - save_cache:
-            key: v1-library-{{ checksum "libraryfile.lock"}}
+            key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
             paths:
                 - library
 
@@ -48,7 +48,7 @@ jobs:
         working_directory: ~/circleci
         -restore_cache:
                 keys:
-                    - v1-library-{{ checksum "libraryfile.lock"}}
+                    - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
                     - library
         steps:
             - checkout        
@@ -61,7 +61,7 @@ jobs:
         working_directory: ~/circleci
         -restore_cache:
                 keys:
-                    - v1-library-{{ checksum "libraryfile.lock"}}
+                    - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
                     - library
         steps:
             - checkout
