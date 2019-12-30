@@ -46,25 +46,25 @@ jobs:
         docker:
             - image: circleci/python:3.7.0
         working_directory: ~/circleci
-        -restore_cache:
+        steps:
+            - checkout
+            - restore_cache:
                 keys:
                     - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-                    - "library"
-        steps:
-            - checkout        
+                    - "library"        
             - run:
                 name: Running tests
                 command: python3 app.py
     test:
         docker:
             - image: circleci/python:3.7.0
-        working_directory: ~/circleci
-        -restore_cache:
+        working_directory: ~/circleci           
+        steps:
+            - checkout
+            - restore_cache:
                 keys:
                     - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
                     - "library"
-        steps:
-            - checkout
             - run:
                     name: test
                     command: python3 unitest_mysql.py
