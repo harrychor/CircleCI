@@ -36,9 +36,14 @@ jobs:
     - run:
         name: Install rewquirements
         command: pip3 install -r requirements/dev.txt --user
-    - run:
-        name: Running tests
-        command: python3 app.py
+server:        
+        docker:
+            - image: circleci/python:3.7.0
+        step:
+            - checkout        
+            - run:
+                name: Running tests
+                command: python3 app.py
 test:
         docker:
             - image: circleci/python:3.7.0
@@ -54,9 +59,13 @@ workflows:
     build-and-deploy:
         jobs:
             - build
+            - server:
+                requires:
+                    - build
             - test:
                 requires:
                     - build
+            
 
             
 
