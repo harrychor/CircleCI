@@ -8,11 +8,8 @@ jobs:
         steps:
         - checkout
         - restore_cache:
-            keys:
-                - pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
-                - pip-library-{{ .Branch }}-   
-                - pip-library-
-
+            key: pip-library-{{ checksum "requirements/dev.txt" }}
+                
         - run:
             name: Setup virtualenv
             command: virtualenv env
@@ -46,7 +43,7 @@ jobs:
         - save_cache:
             paths:
                 - ~/circleci 
-            key:  pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+            key:  pip-library-{{ checksum "requirements/dev.txt" }}
            
 
     server:        
@@ -57,8 +54,7 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
-                    - pip-library-{{ .Branch }}-   
+                    - pip-library-{{ checksum "requirements/dev.txt" }}
                     - pip-library-     
             - run:
                 name: Running tests
@@ -71,8 +67,7 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
-                    - pip-library-{{ .Branch }}-
+                    - pip-library-{{ checksum "requirements/dev.txt" }}
                     - pip-library-
             - run:
                     name: test
