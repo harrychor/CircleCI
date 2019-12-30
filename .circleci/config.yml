@@ -38,9 +38,10 @@ jobs:
             name: Install rewquirements
             command: pip3 install -r requirements/dev.txt --user
         - save_cache:
-            key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
             paths:
                 - ~/circleci 
+            key:  pip-library-{{ .Branch }}-{{ checksum "requirements.lock" }}
+           
 
     server:        
         docker:
@@ -50,7 +51,9 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}        
+                    - pip-library-{{ .Branch }}-{{ checksum "requirements.lock" }}
+                    - pip-library-{{ .Branch }}-   
+                    - pip-library-     
             - run:
                 name: Running tests
                 command: python3 app.py
@@ -62,7 +65,9 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+                    - pip-library-{{ .Branch }}-{{ checksum "requirements.lock" }}
+                    - pip-library-{{ .Branch }}-
+                    - pip-library-
             - run:
                     name: test
                     command: python3 unitest_mysql.py
