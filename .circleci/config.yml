@@ -1,4 +1,3 @@
-workflows:
     version: 2
     build-test-and-deploy:
         jobs:
@@ -45,6 +44,10 @@ workflows:
                 - run:
                     name:  Running tests
                     command: python3 app.py   
+    workflows:
+        version: 2
+        test:
+            jobs:
             - deploy:
                 requires:
                     - server
