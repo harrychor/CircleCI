@@ -40,14 +40,14 @@ jobs:
         - save_cache:
               paths:
                   - library
-              key: v1-library-{{ checksum "libraryfile"}}
+              key: v1-library-{{ checksum "libraryfile.lock"}}
     server:        
         docker:
             - image: circleci/python:3.7.0
         working_directory: ~/circleci
         -restore_cache:
                 keys:
-                    - v1-library-{{ checksum "libraryfile"}}
+                    - v1-library-{{ checksum "libraryfile.lock"}}
                     - v1-library-
         steps:
             - checkout        
@@ -60,7 +60,7 @@ jobs:
         working_directory: ~/circleci
         -restore_cache:
                 keys:
-                    - v1-library-{{ checksum "libraryfile"}}
+                    - v1-library-{{ checksum "libraryfile.lock"}}
                     - v1-library-
         steps:
             - checkout
