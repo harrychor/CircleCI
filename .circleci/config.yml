@@ -40,7 +40,7 @@ jobs:
         - save_cache:
             paths:
                 - ~/circleci 
-            key:  pip-library-{{ .Branch }}-{{ checksum "requirements.lock" }}
+            key:  pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
            
 
     server:        
@@ -51,7 +51,7 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - pip-library-{{ .Branch }}-{{ checksum "requirements.lock" }}
+                    - pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
                     - pip-library-{{ .Branch }}-   
                     - pip-library-     
             - run:
@@ -65,7 +65,7 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - pip-library-{{ .Branch }}-{{ checksum "requirements.lock" }}
+                    - pip-library-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
                     - pip-library-{{ .Branch }}-
                     - pip-library-
             - run:
