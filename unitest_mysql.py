@@ -39,7 +39,7 @@ class Twitter(db.Model): # create table twitter
         self.tweet_count = tweet_count
         self.like_count = like_count
 
-class TestStringMethods(unittest.TestCase):
+class TestInsert(unittest.TestCase):
 
     def test_insert_Account_created(self):
         data = Account_created("test","1970-01-01")
@@ -51,12 +51,14 @@ class TestStringMethods(unittest.TestCase):
         insdata = Twitter("test","2019-12-30","721","69","101","64")
         db.session.add(insdata)
         db.session.commit()
+        self.assertTrue(insdata)
 
     def test_isitexist_Account_created(self):
-        exists = db.session.query(Account_created.id).filter_by(username="test").scalar() is not None
-        dateexist = db.session.query(Twitter.id).filter_by(DATE = "2019-12-30", username = "test").scalar() is not None
+        exists = db.session.query(Account_created.id).filter_by(username='test').scalar() is not None
+        dateexist = db.session.query(Twitter.id).filter_by(DATE = '2019-12-30', username = 'test').scalar() is not None
         db.session.commit()
-        
-        
+        self.assertTrue(exists)
+        self.assertTrue(dateexist)
+
 if __name__ == '__main__':
     unittest.main()
