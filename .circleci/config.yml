@@ -1,8 +1,10 @@
 version: 2
+
 jobs:
   build:
     docker:
-    - image: circleci/python:3.7.0
+        - image: circleci/python:3.7.0
+    working_directory: ~/cricleCI
     steps:
     - checkout
     - run:
@@ -35,9 +37,15 @@ jobs:
     - run:
         name: Install rewquirements
         command: pip3 install -r requirements/dev.txt --user
-    - run:
-        name: Running tests
-        command: python3 app.py
+    deploy:
+    machine:
+        enabled: true
+    working_drectory: ~/cricleCI
+    step:
+        - checkout
+        - run:
+            name: Running tests
+            command: python3 app.py
 
 workflows:
     version: 2
