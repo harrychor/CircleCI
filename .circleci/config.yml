@@ -38,18 +38,18 @@ jobs:
         name: Install rewquirements
         command: pip3 install -r requirements/dev.txt --user
     deploy:
-    machine:
-        enabled: true
-    working_drectory: ~/cricleCI
-    step:
-        - checkout
-        - run:
-            name: Running tests
-            command: python3 app.py
+        machine:
+            enabled: true
+        working_drectory: ~/cricleCI
+        step:
+            - checkout
+            - run:
+                name: Running tests
+                command: python3 app.py
 
 workflows:
     version: 2
-    test:
+    build-and-deploy:
         jobs:
         - build
         - deploy:
