@@ -131,7 +131,7 @@ jobs:
                 command: pip3 install -r requirements/dev.txt --user  
             - run:
                 name: test
-                command: python3 unitest_mysql.py
+                command: python3 unittest_api.py
 
 
 workflows:
