@@ -47,7 +47,7 @@ class TestApi(unittest.TestCase):
         self.assertTrue(tweet == 0)
 
     def test_like(self):
-        self.assertTrue(like == 0)
+        self.assertTrue(like == 3)
     
 
 if __name__ == '__main__':
